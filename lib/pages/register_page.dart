@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:login/app/navigation/router_location.dart';
 import 'package:login/components/text_field.dart';
 
 import '../components/button.dart';
 
 class RegisterPage extends StatefulWidget {
-  final void Function()? onTap;
-  const RegisterPage({super.key, required this.onTap});
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -62,8 +63,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Ban da co tai khoan?'),
-                    GestureDetector(
-                      onTap: widget.onTap,
+                    InkWell(
+                      onTap: () => context.go(AppRouterLocation.loginPage.path),
                       child: Text(
                         " Dang nhap ngay",
                         style: TextStyle(

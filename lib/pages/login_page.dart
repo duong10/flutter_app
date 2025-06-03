@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:login/app/navigation/router_location.dart';
 import 'package:login/components/button.dart';
 import 'package:login/components/text_field.dart';
 
 class LoginPage extends StatefulWidget {
-  final void Function()? onTap;
-  const LoginPage({super.key, required this.onTap});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -20,10 +21,12 @@ class _LoginPageState extends State<LoginPage> {
     // sign in
     void SignIn() async {
       try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
+        final user = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailEditingController.text,
           password: passwordEditingController.text,
         );
+        print(user);
+        if (user != null) context.go(AppRouterLocation.homePage.path);
       } on FirebaseAuthException catch (e) {
         print(e.code);
       }
@@ -68,7 +71,8 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     Text('Ban chua co tai khoan?'),
                     InkWell(
-                      onTap: ,
+                      onTap:
+                          () => context.go(AppRouterLocation.registerPage.path),
                       child: Text(
                         " Dang ki ngay",
                         style: TextStyle(
