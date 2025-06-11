@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class AccountPage extends StatefulWidget {
+  const AccountPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AccountPage> createState() => _AccountPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Home',
+          'Account',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
         ),
         backgroundColor: Colors.blue,
       ),
-      body: Center(child: Text("Home Page")),
+      body: Center(child: Text("Account Page")),
     );
   }
 }

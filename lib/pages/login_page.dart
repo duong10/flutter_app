@@ -19,14 +19,17 @@ class _LoginPageState extends State<LoginPage> {
     final passwordEditingController = TextEditingController();
 
     // sign in
-    void SignIn() async {
+    void signIn() async {
       try {
         final user = await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailEditingController.text,
           password: passwordEditingController.text,
         );
         print(user);
-        if (user != null) context.go(AppRouterLocation.homePage.path);
+        if (!mounted) return;
+        if (user != null) {
+          context.go(AppRouterLocation.bottomNavigation.path);
+        }
       } on FirebaseAuthException catch (e) {
         print(e.code);
       }
@@ -63,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 // Button Login
                 SizedBox(height: 35),
-                CustomButton(onTap: () => SignIn(), text: "Sign in"),
+                CustomButton(onTap: () => signIn(), text: "Sign in"),
 
                 SizedBox(height: 15),
                 Row(
