@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:login/auth/auth_page.dart';
 import 'package:login/firebase_options.dart';
@@ -79,10 +81,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: _router,
-      title: "GoRouter Demo",
+    return ScreenUtilInit(
+      designSize: const Size(390, 844),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      enableScaleWH: () => kIsWeb ? false : true,
+      builder: (_, context) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routerConfig: _router,
+          title: "GoRouter Demo",
+        );
+      },
     );
   }
 }
