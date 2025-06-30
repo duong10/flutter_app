@@ -17,9 +17,18 @@ class $AssetsIconsGen {
   String get icCart => 'assets/icons/ic_cart.svg';
   String get icFavorite => 'assets/icons/ic_favorite.svg';
   String get icUser => 'assets/icons/ic_user.svg';
+  String get icLogo => 'assets/icons/ic_logo.svg';
+  String get icSearch => 'assets/icons/ic_search.svg';
 
   /// List of all assets
-  List<String> get values => [icStore, icCart, icFavorite, icUser];
+  List<String> get values => [
+    icStore,
+    icCart,
+    icFavorite,
+    icUser,
+    icLogo,
+    icSearch,
+  ];
 }
 
 class $AssetsImagesGen {

@@ -6,11 +6,12 @@ import 'package:go_router/go_router.dart';
 import 'package:login/auth/auth_page.dart';
 import 'package:login/firebase_options.dart';
 import 'package:login/pages/account_page.dart';
-import 'package:login/pages/home_page.dart';
+import 'package:login/pages/home/home_page.dart';
 import 'package:login/pages/setting_page.dart';
 
 import 'app/navigation/bottom_navigation.dart';
 import 'app/navigation/router_location.dart';
+import 'injection/dependency_manager.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +38,7 @@ final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey<NavigatorState>(
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await DependencyManager.inject();
   runApp(MyApp());
 }
 
